@@ -6,13 +6,13 @@
 #    By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/07 14:21:44 by pitriche          #+#    #+#              #
-#    Updated: 2019/12/19 11:32:48 by pitriche         ###   ########.fr        #
+#    Updated: 2019/12/19 12:14:09 by pitriche         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 GREY    = \033[030m
 RED     = \033[031m
-GREEN   = \033[132m
+GREEN   = \033[032m
 YELLOW  = \033[033m
 BLUE    = \033[034m
 MAGENTA = \033[035m
@@ -30,26 +30,32 @@ LFLAGS = $(FLAGS) $(MLX)
 CFLAGS = -c $(FLAGS)
 
 LIB = libft/libft.a
+
+HEADERS = include/rtv1.h
 CINCLUDE = -I include -I libft/include -I MLX/X11
 
 NAME = rtv1
 
-SRC = \
+SRC_FILES = \
 main_rt.c	\
-init.c		\
+init.c
 
+SRC_DIR = src/
+SRC := $(addprefix $(SRC_DIR), $(SRC_FILES))
+
+OBJ_FILES = $(patsubst %.c, %.o, $(SRC_FILES))
 OBJ_DIR = obj/
-OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+OBJ := $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
-all: $(LIB) $(OBJ_DIR) $(NAME)
+all: $(NAME)
 	@echo "$(CYAN)$(NAME) ready sir !$(RESET)"
 
-$(NAME): $(OBJ)
+$(NAME): $(LIB) $(OBJ_DIR) $(OBJ)
 	@echo "$(GREEN)objects done sir !$(RESET)"
-	@$(CC) $(LFLAGS) -o $(NAME) $(LIB) $^
+	@$(CC) $(LFLAGS) -o $(NAME) $(LIB) $(OBJ)
 	@echo "$(GREEN)$(NAME) compiled sir !$(RESET)"
 
-$(addprefix $(OBJ_DIR), %.o) : %.c
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c $(HEADERS)
 	@$(CC) $(CINCLUDE) $(CFLAGS) -o $@ $<
 	@echo -n '.'
 
