@@ -7,7 +7,7 @@ format is the following :
 ->Digital fields:
 'mm'	> position, signed integer in milimeter
 'or'	> -100<>100 coordonate on x, y and z, treated as a vector, software
-normalized, used for orientations
+normalized, used for orientations.
 'col'	> 0<>255 value for RGB
 'an'	> 0<>360 angle for the cone in degree
 'in'	> 0<>100 percents for light source brightness
@@ -55,3 +55,6 @@ printed in the terminal to notify a missing field.
 There is no order to follow, however only one camera is allowed, so adding
 multiple camera lines will overwrite previous ones so only the last one will
 actually count.
+
+If the file has no readeable content, the program will start anyway, displaying
+nothing as it should.

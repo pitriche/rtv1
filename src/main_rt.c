@@ -6,7 +6,7 @@
 /*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 11:11:47 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/20 11:21:47 by pitriche         ###   ########.fr       */
+/*   Updated: 2019/12/20 15:27:15 by pitriche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	main(int ac, char **av)
 {
-	(void)av;
 	t_al *al;
 
 	al = 0;
@@ -22,7 +21,7 @@ int	main(int ac, char **av)
 		return (0);
 	if (!(al = ft_memalloc(sizeof(t_al))))
 		exit(0);
-	init(al);
+	init(al, av[1]);
 	mlx_loop(al->mlx);
 	return (0);
 }

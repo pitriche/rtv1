@@ -6,7 +6,7 @@
 /*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:42:19 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/19 16:30:25 by pitriche         ###   ########.fr       */
+/*   Updated: 2019/12/20 15:26:24 by pitriche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ void	init_mlx(t_al *al)
 	mlx_do_key_autorepeatoff(al->mlx);
 }
 
-void	init(t_al *al)
+void	init(t_al *al, char *str)
 {
+	mica_parser(al, str);
 	init_mlx(al);
 	set_hooks(al);
 	al->fps = 60;

@@ -6,7 +6,7 @@
 /*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:45:14 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/20 15:00:17 by pitriche         ###   ########.fr       */
+/*   Updated: 2019/12/20 15:27:11 by pitriche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/time.h>
+# include <fcntl.h>
 
 /*
 ** DEFINES #####################################################################
@@ -123,7 +124,7 @@ typedef struct	s_al
 ** PROTOTYPES ##################################################################
 */
 
-void			init(t_al *al);
+void			init(t_al *al, char *str);
 void			render(t_al *al);
 void			mica_parser(t_al *al, char *str);
 
