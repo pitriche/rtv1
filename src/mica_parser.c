@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   mica_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/14 19:05:26 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/19 13:04:36 by pitriche         ###   ########.fr       */
+/*   Created: 2019/12/20 11:21:47 by pitriche          #+#    #+#             */
+/*   Updated: 2019/12/20 14:59:15 by pitriche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "rtv1.h"
 
-/*
-** ft_bzero  F 4 S T  A S  F U C C
-** fill n bytes of memory with 0 at the s adress, but f4ster than my bullet
-** -
-** takes the adress to start padding and the number of bytes to pad
-** return nothing
-*/
-
-void	ft_bzero(void *s, size_t n)
+void	mica_parser(t_al *al, char *str)
 {
-	while (n & 0b111)
-	{
-		n--;
-		*((char *)s + n) = 0;
-	}
-	while (n >= 8)
-	{
-		n -= 8;
-		*((long *)s + (n >> 3)) = 0;
-	}
+	(void)al;
+	(void)str;
 }

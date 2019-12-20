@@ -6,7 +6,7 @@
 #    By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/07 14:21:44 by pitriche          #+#    #+#              #
-#    Updated: 2019/12/19 12:14:09 by pitriche         ###   ########.fr        #
+#    Updated: 2019/12/20 14:59:46 by pitriche         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ RESET   = \033[0m
 CC = cc
 
 MLX = -lmlx -framework OpenGL -framework AppKit
-FL_OPTI = -O3 -flto
+FL_OPTI = 
+#-O3 -flto
 FLAGS = -Wall -Wextra $(FL_OPTI)
 LFLAGS = $(FLAGS) $(MLX)
 CFLAGS = -c $(FLAGS)
@@ -36,9 +37,12 @@ CINCLUDE = -I include -I libft/include -I MLX/X11
 
 NAME = rtv1
 
-SRC_FILES = \
-main_rt.c	\
-init.c
+SRC_FILES = 	\
+main_rt.c		\
+init.c			\
+mica_parser.c	\
+main_loop.c		\
+render.c
 
 SRC_DIR = src/
 SRC := $(addprefix $(SRC_DIR), $(SRC_FILES))
