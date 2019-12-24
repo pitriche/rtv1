@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mica_parser.c                                      :+:      :+:    :+:   */
+/*   gen_camera.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/20 11:21:47 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/22 21:43:40 by pierre42         ###   ########.fr       */
+/*   Created: 2019/12/24 15:22:13 by pitriche          #+#    #+#             */
+/*   Updated: 2019/12/24 16:10:43 by pierre42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	mica_parser(t_al *al, char *str)
+void	gen_camera(t_v3 **ca, t_v3 tgt, t_v3 up)
 {
-	char	*buf;
-	int		ret;
-	int		fd;
+	t_v3 unit_camx;
+	t_v3 unit_camy;
 
-	if ((fd = open(str, O_RDONLY)) < 0)
-		exit(ft_dprintf(2, "Can't open [%s]\n", str));
-	while ((ret = get_next_line(fd, &buf)))
-	{
-		ret == -1 ? exit(0) : 0;
-		if (*buf != '#' && *buf)
-			parse_line(al, buf);
-	}
-	ft_printf("Parsed %s successfully !\n", str);
-	close(fd);
+	cpv3p(&unit_camx, up, tgt);
+	normv3(&unit_camx);
+	cpv3p(&unit_camy, tgt, unit_camx);
+	ft_printf("tgt[%.3f,%.3f,%.3f]\n", tgt.x, tgt.y, tgt.z);
+	ft_printf("x[%.3f,%.3f,%.3f], y[%.3f,%.3f,%.3f]\n",
+	unit_camx.x, unit_camx.y, unit_camx.z,
+	unit_camy.x, unit_camy.y, unit_camy.z);
 }

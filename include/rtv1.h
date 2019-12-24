@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:45:14 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/20 15:27:11 by pitriche         ###   ########.fr       */
+/*   Updated: 2019/12/24 15:58:27 by pierre42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <stdlib.h>
 # include <sys/time.h>
 # include <fcntl.h>
+# include <math.h>
 
 /*
 ** DEFINES #####################################################################
@@ -36,6 +37,9 @@
 # define EV_KEY_PRESS	2
 # define EV_KEY_RELEA	3
 # define EV_CLOSE_WIN	17
+
+# define MAX_OBJ	69420
+# define MAX_LIGHT	420
 
 /*
 ** TYPEDEFS ####################################################################
@@ -64,29 +68,25 @@ typedef enum	e_type
 ** STRUCTURES ##################################################################
 */
 
-/*
-** 3d vector using signed fixed point 64 bits real number
-*/
-
-typedef struct	s_v3s
+typedef struct	s_v3
 {
-	t_s64	x;
-	t_s64	y;
-	t_s64	z;
-}				t_v3s;
+	double	x;
+	double	y;
+	double	z;
+}				t_v3;
 
 typedef struct	s_co
 {
-	t_v3s	pos;
-	t_v3s	or;
+	t_v3	pos;
+	t_v3	or;
 }				t_co;
 
 typedef struct	s_obj
 {
-	t_co		co;
 	t_type		type;
-	t_u64		size;
-	t_u64		angle;
+	t_co		co;
+	double		size;
+	double		angle;
 	unsigned	color;
 }				t_obj;
 
@@ -104,15 +104,17 @@ typedef struct	s_al
 
 	unsigned		fps;
 
-	t_u64			fovh;
-	t_u64			fovv;
+	double			fovh;
+	double			fovv;
 	t_co			cam;
+	t_v3			cam_up;
+	t_v3			ca[WIN_SIZEY][WIN_SIZEX];
 
 	unsigned		nb_obj;
 	t_obj			*obj;
 
 	unsigned		nb_light;
-	t_v3s			*light;
+	t_obj			*light;
 
 	unsigned long	curr_time;
 	unsigned long	last_time;
@@ -129,5 +131,30 @@ void			render(t_al *al);
 void			mica_parser(t_al *al, char *str);
 
 int				func_loop(t_al *al);
+
+void			gen_camera(t_v3 **ca, t_v3 tgt, t_v3 up);
+
+/*
+** maths 
+*/
+
+void			normv3(t_v3 *v);
+void			cpv3p(t_v3 *v, t_v3 v1, t_v3 v2);
+t_v3			cpv3(t_v3 v1, t_v3 v2);
+
+/*
+** parse
+*/
+
+void			parse_light(t_al *al, char *str);
+void			parse_cam(t_al *al, char *str);
+int				parse_color(unsigned *c, char **str);
+int				parse_v3(t_v3 *v, char **str);
+int				parse_int(int *nb, char **str);
+void			parse_sphere(t_al *al, char *str);
+void			parse_plan(t_al *al, char *str);
+void			parse_cone(t_al *al, char *str);
+void			parse_cylinder(t_al *al, char *str);
+void			parse_line(t_al *al, char *str);
 
 #endif

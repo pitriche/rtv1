@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:42:19 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/20 15:26:24 by pitriche         ###   ########.fr       */
+/*   Updated: 2019/12/24 15:43:18 by pierre42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,13 @@ void	init_mlx(t_al *al)
 
 void	init(t_al *al, char *str)
 {
+	al->obj = ft_memalloc(MAX_OBJ * sizeof(t_obj));
+	al->light = ft_memalloc(MAX_LIGHT * sizeof(t_obj));
 	mica_parser(al, str);
+	al->cam_up.x = 0;
+	al->cam_up.y = 1;
+	al->cam_up.z = 0;
+	gen_camera(al->ca, al->cam.or, al->cam_up);
 	init_mlx(al);
 	set_hooks(al);
 	al->fps = 60;

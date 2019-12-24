@@ -6,11 +6,11 @@ format is the following :
 
 ->Digital fields:
 'mm'	> position, signed integer in milimeter
-'or'	> -100<>100 coordonate on x, y and z, treated as a vector, software
+'or'	> signed coordonate on x, y and z, treated as a vector, software
 normalized, used for orientations.
 'col'	> 0<>255 value for RGB
 'an'	> 0<>360 angle for the cone in degree
-'in'	> 0<>100 percents for light source brightness
+'in'	> light intensity, unsigned integer in lumens
 
 
 ->Camera line:
@@ -40,7 +40,7 @@ the cone color
 
 -Light lines:
 l 'mm mm mm' i 'in'
-where the position come first, and i is the light source intensity.
+where the position come first, and i is the light source intensity, in lumen
 
 
 Empty lines are skipped, and every line beginning by '#' will be ignored.
