@@ -6,11 +6,28 @@
 /*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 10:34:00 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/24 11:35:42 by pierre42         ###   ########.fr       */
+/*   Updated: 2019/12/24 17:31:55 by pierre42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+
+void	assign_v3(t_v3 *v, double x, double y, double z)
+{
+	v->x = x;
+	v->y = y;
+	v->z = z;
+}
+
+int		are_parallel(t_v3 v1, t_v3 v2)
+{
+	normv3(&v1);
+	normv3(&v2);
+	if ((v1.x == v2.x && v1.y == v2.y && v1.z == v2.z) ||
+		(v1.x == -v2.x && v1.y == -v2.y && v1.z == -v2.z))
+		return (1);
+	return (0);
+}
 
 t_v3	cpv3(t_v3 v1, t_v3 v2)
 {

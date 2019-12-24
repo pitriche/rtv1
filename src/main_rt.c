@@ -6,7 +6,7 @@
 /*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 11:11:47 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/24 15:24:22 by pierre42         ###   ########.fr       */
+/*   Updated: 2019/12/24 17:23:54 by pierre42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	print_objs(t_al *al)
 {
 	t_obj *ob;
 
-	ft_printf("Cam [%.2f,%.2f,%.2f] or [%.3f,%.3f,%.3f] fov[%.2f,%.2f]\n\n", al->cam.pos.x, al->cam.pos.y, al->cam.pos.z,
-	al->cam.or.x, al->cam.or.y, al->cam.or.z, al->fovh, al->fovv);
+	ft_printf("Cam [%.2f,%.2f,%.2f] or [%.3f,%.3f,%.3f] fov[%.2f,%.2f]\n\n", al->c.pos.x, al->c.pos.y, al->c.pos.z,
+	al->c.or.x, al->c.or.y, al->c.or.z, al->c.fovx, al->c.fovy);
 	for (unsigned i = 0; i < al->nb_obj; i++)
 	{
 		ob = al->obj + i;

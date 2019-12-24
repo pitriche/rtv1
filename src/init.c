@@ -6,7 +6,7 @@
 /*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:42:19 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/24 15:43:18 by pierre42         ###   ########.fr       */
+/*   Updated: 2019/12/24 17:09:28 by pierre42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void	init(t_al *al, char *str)
 	al->obj = ft_memalloc(MAX_OBJ * sizeof(t_obj));
 	al->light = ft_memalloc(MAX_LIGHT * sizeof(t_obj));
 	mica_parser(al, str);
-	al->cam_up.x = 0;
-	al->cam_up.y = 1;
-	al->cam_up.z = 0;
-	gen_camera(al->ca, al->cam.or, al->cam_up);
+	al->c.up.x = 0;
+	al->c.up.y = 1;
+	al->c.up.z = 0;
+	gen_camera(&al->c);
 	init_mlx(al);
 	set_hooks(al);
 	al->fps = 60;

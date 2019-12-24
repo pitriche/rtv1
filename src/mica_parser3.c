@@ -6,7 +6,7 @@
 /*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 11:21:47 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/24 15:47:37 by pierre42         ###   ########.fr       */
+/*   Updated: 2019/12/24 17:24:50 by pierre42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,21 @@ void	parse_cam(t_al *al, char *str)
 	int tmp;
 
 	*str == ' ' ? str++ : 0;
-	if (parse_v3(&al->cam.pos, &str))
+	if (parse_v3(&al->c.pos, &str))
 		ft_dprintf(2, "Error parsing camera position [>%c<%s]\n", *str, str + 1);
 	if (ft_strncmp("o ", str, 2))
 		return ;
 	str += 2;
-	if (parse_v3(&al->cam.or, &str))
+	if (parse_v3(&al->c.or, &str))
 		ft_dprintf(2, "Error parsing camera orientation [>%c<%s]\n", *str, str + 1);
-	normv3(&al->cam.or);
+	normv3(&al->c.or);
 	if (ft_strncmp("f ", str, 2))
 		return ;
 	str += 2;
 	parse_int(&tmp, &str);
 	tmp = (tmp % 180);
-	al->fovh = tan(tmp * M_PI / 360);
-	al->fovv = al->fovh * WIN_SIZEY / WIN_SIZEX;
+	al->c.fovx = tan(tmp * M_PI / 360);
+	al->c.fovy = al->c.fovx * WIN_SIZEY / WIN_SIZEX;
 	/*ft_printf("cam [%.2f,%.2f,%.2f] or [%.2f,%.2f,%.2f] fov:[%.4f,%.4f]\n",
 	al->cam.pos.x / (double)UINT32_MAX,
 	al->cam.pos.y / (double)UINT32_MAX,

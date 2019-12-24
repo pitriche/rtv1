@@ -6,7 +6,7 @@
 #    By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/07 14:21:44 by pitriche          #+#    #+#              #
-#    Updated: 2019/12/24 15:58:36 by pierre42         ###   ########.fr        #
+#    Updated: 2019/12/24 17:54:52 by pierre42         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ mica_parser.c	\
 mica_parser2.c	\
 mica_parser3.c	\
 vector_maths.c	\
+vector_maths2.c	\
 gen_camera.c	\
 main_loop.c		\
 render.c

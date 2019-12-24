@@ -6,7 +6,7 @@
 /*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:45:14 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/24 15:58:27 by pierre42         ###   ########.fr       */
+/*   Updated: 2019/12/24 18:09:25 by pierre42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,20 @@ typedef struct	s_co
 	t_v3	or;
 }				t_co;
 
+typedef struct	s_cam
+{
+	t_v3	pos;
+	t_v3	or;
+	t_v3	up;
+
+	double	fovx;
+	double	fovy;
+	t_v3	inc_camx;
+	t_v3	inc_camy;
+
+	t_v3	vec[WIN_SIZEY][WIN_SIZEX];
+}				t_cam;
+
 typedef struct	s_obj
 {
 	t_type		type;
@@ -104,11 +118,7 @@ typedef struct	s_al
 
 	unsigned		fps;
 
-	double			fovh;
-	double			fovv;
-	t_co			cam;
-	t_v3			cam_up;
-	t_v3			ca[WIN_SIZEY][WIN_SIZEX];
+	t_cam			c;
 
 	unsigned		nb_obj;
 	t_obj			*obj;
@@ -132,7 +142,7 @@ void			mica_parser(t_al *al, char *str);
 
 int				func_loop(t_al *al);
 
-void			gen_camera(t_v3 **ca, t_v3 tgt, t_v3 up);
+void			gen_camera(t_cam *c);
 
 /*
 ** maths 
@@ -141,6 +151,10 @@ void			gen_camera(t_v3 **ca, t_v3 tgt, t_v3 up);
 void			normv3(t_v3 *v);
 void			cpv3p(t_v3 *v, t_v3 v1, t_v3 v2);
 t_v3			cpv3(t_v3 v1, t_v3 v2);
+int				are_parallel(t_v3 v1, t_v3 v2);
+void			assign_v3(t_v3 *v, double x, double y, double z);
+void			mult_v3(t_v3 *v, double x);
+void			add_v3(t_v3 *v, t_v3 v1, t_v3 v2);
 
 /*
 ** parse
