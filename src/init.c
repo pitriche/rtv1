@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changuy <changuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:42:19 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/24 17:09:28 by pierre42         ###   ########.fr       */
+/*   Updated: 2019/12/25 19:29:17 by changuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,7 @@ void	init(t_al *al, char *str)
 	al->obj = ft_memalloc(MAX_OBJ * sizeof(t_obj));
 	al->light = ft_memalloc(MAX_LIGHT * sizeof(t_obj));
 	mica_parser(al, str);
-	al->c.up.x = 0;
-	al->c.up.y = 1;
-	al->c.up.z = 0;
+	assign_v3(&al->c.up, 0, 1, 0);
 	gen_camera(&al->c);
 	init_mlx(al);
 	set_hooks(al);

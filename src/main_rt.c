@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changuy <changuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 11:11:47 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/24 17:23:54 by pierre42         ###   ########.fr       */
+/*   Updated: 2019/12/25 14:35:09 by changuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ int		main(int ac, char **av)
 		exit(0);
 	init(al, av[1]);
 	print_objs(al);
-	//mlx_loop(al->mlx);
+	mlx_loop(al->mlx);
 	return (0);
 }

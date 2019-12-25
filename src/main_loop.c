@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changuy <changuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 16:18:30 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/19 16:32:18 by pitriche         ###   ########.fr       */
+/*   Updated: 2019/12/25 18:52:30 by changuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int			func_loop(t_al *al)
 	render(al);
 	mlx_put_image_to_window(al->mlx, al->win, al->img, 0, 0);
 	dtime(al);
-	ft_printf("fps:%d ", 1000000 / al->dtime);
+	ft_printf("gen image: %.3f s\t fps:%d \n", al->dtime / 1000000.0, 0, 1000000 / al->dtime);
 	return (0);
 }

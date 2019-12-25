@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gen_camera.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changuy <changuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 15:22:13 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/25 11:42:30 by pierre42         ###   ########.fr       */
+/*   Updated: 2019/12/25 18:28:47 by changuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	gen_camera(t_cam *c)
 		i = 1;
 		while (i < WIN_SIZEX)
 		{
-			add_v3(c->vec[j] + i, c->vec[j][i - 1], c->inc_camx);
+			add_v3p(c->vec[j] + i, c->vec[j][i - 1], c->inc_camx);
 			i -= -1;
 		}
 		if ((++j) != WIN_SIZEY)
 		{
-			add_v3(c->vec[j], c->vec[j - 1][i - 1],
+			add_v3p(c->vec[j], c->vec[j - 1][i - 1],
 			mult_v3(c->inc_camx, -WIN_SIZEX + 1));
-			add_v3(c->vec[j], c->vec[j][0], c->inc_camy);
+			add_v3p(c->vec[j], c->vec[j][0], c->inc_camy);
 			/*ft_printf("left pix [%.3f,%.3f,%.3f] [%.3f,%.3f,%.3f]\n",
 	c->vec[j][0].x, c->vec[j][0].y, c->vec[j][0].z,
 	c->vec[j - 1][i - 1].x, c->vec[j - 1][i - 1].y, c->vec[j - 1][i - 1].z);*/
@@ -58,9 +58,9 @@ void	gen_camera(t_cam *c)
 		i = 0;
 		while (i < WIN_SIZEX)
 			normv3(c->vec[j] + (i++));
-		ft_printf("left pix [%.3f,%.3f,%.3f] right pix[%.3f,%.3f,%.3f]\n",
+		/*ft_printf("left pix [%.3f,%.3f,%.3f] right pix[%.3f,%.3f,%.3f]\n",
 	c->vec[j][0].x, c->vec[j][0].y, c->vec[j][0].z,
-	c->vec[j - 1][i - 1].x, c->vec[j - 1][i - 1].y, c->vec[j - 1][i - 1].z);
+	c->vec[j - 1][i - 1].x, c->vec[j - 1][i - 1].y, c->vec[j - 1][i - 1].z);*/
 		j++;
 	}
 }

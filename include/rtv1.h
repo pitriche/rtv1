@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
+/*   By: changuy <changuy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:45:14 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/25 11:05:53 by pierre42         ###   ########.fr       */
+/*   Updated: 2019/12/25 20:55:21 by changuy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,15 @@ typedef struct	s_obj
 	unsigned	color;
 }				t_obj;
 
+typedef struct	t_rthit
+{
+	t_v3		pos;
+	t_v3		normal;
+	unsigned	color;
+	double		dist;
+	double		lux;//lumen
+}				rthit;
+
 /*
 ** fovh: projected screen width at 1 meter
 ** fovv: projected screen height at 1 meter
@@ -155,7 +164,9 @@ int				are_parallel(t_v3 v1, t_v3 v2);
 void			assign_v3(t_v3 *v, double x, double y, double z);
 void			mult_v3p(t_v3 *v, double x);
 t_v3			mult_v3(t_v3 v, double x);
-void			add_v3(t_v3 *v, t_v3 v1, t_v3 v2);
+void			add_v3p(t_v3 *v, t_v3 v1, t_v3 v2);
+t_v3			sub_v3(t_v3 v1, t_v3 v2);
+double			dpv3(t_v3 v1, t_v3 v2);
 
 /*
 ** parse
