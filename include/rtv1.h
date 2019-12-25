@@ -6,7 +6,7 @@
 /*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:45:14 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/24 18:09:25 by pierre42         ###   ########.fr       */
+/*   Updated: 2019/12/25 11:05:53 by pierre42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,8 @@ void			cpv3p(t_v3 *v, t_v3 v1, t_v3 v2);
 t_v3			cpv3(t_v3 v1, t_v3 v2);
 int				are_parallel(t_v3 v1, t_v3 v2);
 void			assign_v3(t_v3 *v, double x, double y, double z);
-void			mult_v3(t_v3 *v, double x);
+void			mult_v3p(t_v3 *v, double x);
+t_v3			mult_v3(t_v3 v, double x);
 void			add_v3(t_v3 *v, t_v3 v1, t_v3 v2);
 
 /*

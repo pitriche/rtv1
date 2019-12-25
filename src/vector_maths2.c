@@ -6,17 +6,25 @@
 /*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 17:49:08 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/24 18:08:48 by pierre42         ###   ########.fr       */
+/*   Updated: 2019/12/25 11:04:00 by pierre42         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void	mult_v3(t_v3 *v, double x)
+void	mult_v3p(t_v3 *v, double x)
 {
 	v->x *= x;
 	v->y *= x;
 	v->z *= x;
+}
+
+t_v3	mult_v3(t_v3 v, double x)
+{
+	v.x *= x;
+	v.y *= x;
+	v.z *= x;
+	return (v);
 }
 
 void	add_v3(t_v3 *v, t_v3 v1, t_v3 v2)
