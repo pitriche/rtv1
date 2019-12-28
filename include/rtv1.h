@@ -104,14 +104,20 @@ typedef struct	s_obj
 	unsigned	color;
 }				t_obj;
 
-typedef struct	t_rthit
+/*
+** hit indicates a hit or not, use to compensate the lack of pointer to return
+*/
+
+typedef struct	s_rthit
 {
+	int			hit;
+
 	t_v3		pos;
 	t_v3		normal;
 	unsigned	color;
 	double		dist;
 	double		lux;//lumen
-}				rthit;
+}				t_rthit;
 
 /*
 ** fovh: projected screen width at 1 meter

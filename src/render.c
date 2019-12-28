@@ -12,51 +12,51 @@
 
 #include "rtv1.h"
 
-double		inter_sphere(t_obj ray, t_obj obj)
+int			inter_sphere(t_obj ray, t_rthit *hit, t_obj obj)
 {
 	double	d_proj;
 	double	d;
 	t_v3	l;
 
 	l = sub_v3(obj.co.pos, ray.co.pos);
+	hit->di sqrt(dpv3(l, l));
 	d_proj = dpv3(ray.co.or, l);
 	d = sqrt(dpv3(l, l) - d_proj * d_proj);
 	if (d > 0 && d < obj.size)
 		return (sqrt(dpv3(l, l)) - sqrt(obj.size * obj.size - d * d));
-	return (-1);
+	return (0);
 }
 
-double		inter_obj(t_obj ray, t_obj obj)
+int			inter_obj(t_obj ray, t_rthit *hit, t_obj obj)
 {
 	if (obj.type == SPHERE)
-		return (inter_sphere(ray, obj));
-	return (-1);
+		return (inter_sphere(ray, &hit, obj));
 }
 
 unsigned	trace_ray(t_al *al, t_obj ray)
 {
+	t_rthit		hit;
+	t_rthit		tmp_hit;
 	unsigned	i;
-	unsigned	color;
 	unsigned	tmp_dst;
-	unsigned	min_dst;
 
 	i = 0;
-	min_dst = INFINITY;
-	tmp_dst = 0;
-	color = 0;
+	ft_bzero(&hit, sizeof(t_rthit));
+	hit.dist = INFINITY;
+	
 	while (i < al->nb_obj)
 	{
-		if ((tmp_dst = inter_obj(ray, al->obj[i])) != -1)
+		if (inter_obj(ray, &tmp_hit, al->obj[i]))
 		{
-			if (tmp_dst < min_dst)
+			if (tmp_dst < hit.dist)
 			{
-				min_dst = tmp_dst;
-				color = al->obj[i].color;
+				hit.dist = tmp_dst;
+				hit.color = al->obj[i].color;
 			}
 		}
 		i++;
 	}
-	return (color);
+	return (hit.color);
 }
 
 void		render(t_al *al)
