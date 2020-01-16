@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changuy <changuy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 16:18:30 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/25 18:52:30 by changuy          ###   ########.fr       */
+/*   Updated: 2020/01/16 17:38:08 by pitriche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ static void	dtime(t_al *al)
 		al->curr_time = al->tgt_time;
 	}
 	al->dtime = al->curr_time - al->last_time;
-	al->dtime > 1000000 ? al->dtime = 1000000 : 0;
 	al->last_time = al->curr_time;
 	al->tgt_time = al->last_time + 1000000 / al->fps;
 }
 
 int			func_loop(t_al *al)
 {
+	gen_camera(&al->c);
 	render(al);
 	mlx_put_image_to_window(al->mlx, al->win, al->img, 0, 0);
 	dtime(al);
-	ft_printf("gen image: %.3f s\t fps:%d \n", al->dtime / 1000000.0, 0, 1000000 / al->dtime);
+	ft_printf("gen image: %.3f s\t fps:%.2f \n", al->dtime / 1000000.0, 1000000.0 / al->dtime);
 	return (0);
 }

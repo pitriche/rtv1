@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+         #
+#    By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/07 14:21:44 by pitriche          #+#    #+#              #
-#    Updated: 2019/12/24 17:54:52 by pierre42         ###   ########.fr        #
+#    Updated: 2020/01/16 17:20:13 by pitriche         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ RESET   = \033[0m
 CC = cc
 
 MLX = -lmlx -framework OpenGL -framework AppKit
-FL_OPTI = 
+FL_OPTI =
 #-O3 -flto
 FLAGS = -Wall -Wextra $(FL_OPTI)
 LFLAGS = $(FLAGS) $(MLX)
@@ -45,6 +45,9 @@ mica_parser2.c	\
 mica_parser3.c	\
 vector_maths.c	\
 vector_maths2.c	\
+vector_rots.c	\
+inter_sphere.c	\
+inter_plane.c	\
 gen_camera.c	\
 main_loop.c		\
 render.c

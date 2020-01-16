@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: changuy <changuy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:45:14 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/25 20:55:21 by changuy          ###   ########.fr       */
+/*   Updated: 2020/01/16 17:41:41 by pitriche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ typedef struct	s_co
 	t_v3	or;
 }				t_co;
 
+/*
+** fovx: projected screen width at 1 meter
+** fovy: projected screen height at 1 meter
+*/
+
 typedef struct	s_cam
 {
 	t_v3	pos;
@@ -110,19 +115,13 @@ typedef struct	s_obj
 
 typedef struct	s_rthit
 {
-	int			hit;
-
 	t_v3		pos;
 	t_v3		normal;
 	unsigned	color;
 	double		dist;
-	double		lux;//lumen
+	double		lux;
+	int			obj_id;
 }				t_rthit;
-
-/*
-** fovh: projected screen width at 1 meter
-** fovv: projected screen height at 1 meter
-*/
 
 typedef struct	s_al
 {
@@ -134,6 +133,7 @@ typedef struct	s_al
 	unsigned		fps;
 
 	t_cam			c;
+	double			iso;
 
 	unsigned		nb_obj;
 	t_obj			*obj;
@@ -160,7 +160,7 @@ int				func_loop(t_al *al);
 void			gen_camera(t_cam *c);
 
 /*
-** maths 
+** maths
 */
 
 void			normv3(t_v3 *v);
@@ -173,6 +173,17 @@ t_v3			mult_v3(t_v3 v, double x);
 void			add_v3p(t_v3 *v, t_v3 v1, t_v3 v2);
 t_v3			sub_v3(t_v3 v1, t_v3 v2);
 double			dpv3(t_v3 v1, t_v3 v2);
+void			rot_vec(t_v3 *v, double pitch, double yaw, double roll);
+void			transl_vec(t_v3 *v, double x, double y, double z);
+
+/*
+** intersections
+*/
+
+int				inter_sphere_full(t_obj ray, t_rthit *hit, t_obj obj);
+int				inter_sphere(t_obj ray, t_obj obj);
+int				inter_plane_full(t_obj ray, t_rthit *hit, t_obj obj);
+int				inter_plane(t_obj ray, t_obj obj);
 
 /*
 ** parse

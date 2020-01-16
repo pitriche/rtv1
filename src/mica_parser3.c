@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mica_parser3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pierre42 <pierre42@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 11:21:47 by pitriche          #+#    #+#             */
-/*   Updated: 2019/12/24 17:24:50 by pierre42         ###   ########.fr       */
+/*   Updated: 2020/01/07 07:23:10 by pitriche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ void	parse_cam(t_al *al, char *str)
 
 void		parse_light(t_al *al, char *str)
 {
-	t_obj	*l;
-	int		tmp;
+	t_obj		*l;
+	unsigned	tmp;
 
 	l = al->light + al->nb_light;
 	if (parse_v3(&l->co.pos, &str))
@@ -101,7 +101,7 @@ void		parse_light(t_al *al, char *str)
 	if (ft_strncmp("i ", str, 2))
 		return ;
 	str += 2;
-	parse_int(&tmp, &str);
+	parse_int((int *)&tmp, &str);
 	l->size = tmp;
 	al->nb_light++; 
 	/*ft_printf("light [%f,%f,%f] intensity %llu\n",
