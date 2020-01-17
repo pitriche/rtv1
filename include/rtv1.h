@@ -6,7 +6,7 @@
 /*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 10:45:14 by pitriche          #+#    #+#             */
-/*   Updated: 2020/01/16 17:41:41 by pitriche         ###   ########.fr       */
+/*   Updated: 2020/01/17 18:56:51 by pitriche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ typedef struct	s_cam
 	t_v3	or;
 	t_v3	up;
 
+	double	iso;
+
 	double	fovx;
 	double	fovy;
 	t_v3	inc_camx;
@@ -133,7 +135,6 @@ typedef struct	s_al
 	unsigned		fps;
 
 	t_cam			c;
-	double			iso;
 
 	unsigned		nb_obj;
 	t_obj			*obj;

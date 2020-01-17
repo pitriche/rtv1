@@ -6,7 +6,7 @@
 /*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 16:33:06 by pitriche          #+#    #+#             */
-/*   Updated: 2020/01/16 14:51:03 by pitriche         ###   ########.fr       */
+/*   Updated: 2020/01/17 18:58:53 by pitriche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ unsigned	trace_ray(t_al *al, t_obj ray)
 		i++;
 	}
 	hit.dist != INFINITY ? illuminance(al, &hit) : 0;
-	//return (apply_illum(&hit, al->iso));
+	//return (apply_illum(&hit, al->c.iso));
 	return (hit.color);
 }
 

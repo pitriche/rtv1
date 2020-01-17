@@ -6,7 +6,7 @@
 /*   By: pitriche <pitriche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 11:21:47 by pitriche          #+#    #+#             */
-/*   Updated: 2020/01/07 07:23:10 by pitriche         ###   ########.fr       */
+/*   Updated: 2020/01/17 18:57:31 by pitriche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ void	parse_cam(t_al *al, char *str)
 	tmp = (tmp % 180);
 	al->c.fovx = tan(tmp * M_PI / 360);
 	al->c.fovy = al->c.fovx * WIN_SIZEY / WIN_SIZEX;
+	if (ft_strncmp("i ", str, 2))
+		return ;
+	str += 2;
+	parse_int(&tmp, &str);
+	al->c.iso = tmp;
 	/*ft_printf("cam [%.2f,%.2f,%.2f] or [%.2f,%.2f,%.2f] fov:[%.4f,%.4f]\n",
 	al->cam.pos.x / (double)UINT32_MAX,
 	al->cam.pos.y / (double)UINT32_MAX,
